@@ -1,6 +1,6 @@
 <?php
 
-namespace ConnectID\Api\DataModel;
+namespace ConnectId\Api\DataModel;
 
 
 class ProductTypeList extends BasicTypeList {
@@ -15,9 +15,9 @@ class ProductTypeList extends BasicTypeList {
   }
 
   /**
-   * @param \ConnectID\Api\DataModel\ProductType $product_type
+   * @param \ConnectId\Api\DataModel\ProductType $product_type
    *
-   * @return \ConnectID\Api\DataModel\ProductTypeList
+   * @return \ConnectId\Api\DataModel\ProductTypeList
    */
   public function withProduct(ProductType $product_type): ProductTypeList {
     $this->appendWithoutValidation($product_type);

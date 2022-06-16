@@ -1,6 +1,6 @@
 <?php
 
-namespace ConnectID\Api\DataModel;
+namespace ConnectId\Api\DataModel;
 
 
 class OrderLineList extends BasicList implements \Countable, \Iterator {

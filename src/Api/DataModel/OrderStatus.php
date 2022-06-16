@@ -1,6 +1,6 @@
 <?php
 
-namespace ConnectID\Api\DataModel;
+namespace ConnectId\Api\DataModel;
 
 
 class OrderStatus extends BasicData {
@@ -122,5 +122,5 @@ class OrderStatus extends BasicData {
     return $this;
   }
 
-  
+
 }

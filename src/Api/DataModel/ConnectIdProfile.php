@@ -1,6 +1,6 @@
 <?php
 
-namespace ConnectID\Api\DataModel;
+namespace ConnectId\Api\DataModel;
 
 use League\OAuth2\Client\Provider\ResourceOwnerInterface;
 
@@ -86,7 +86,7 @@ class ConnectIdProfile implements ResourceOwnerInterface {
   /**
    * @param array $data
    *
-   * @return \ConnectID\Api\DataModel\ConnectIdProfile
+   * @return \ConnectId\Api\DataModel\ConnectIdProfile
    */
   public static function createFromApiResponse(array $data): ConnectIdProfile {
     $profile = new static($data);
@@ -128,7 +128,7 @@ class ConnectIdProfile implements ResourceOwnerInterface {
    * @see https://doc.mediaconnect.no/doc/ConnectID/v1/api/customer/profile.html
    * @see https://doc.mediaconnect.no/doc/ConnectID/v2/api/customer/profile.html
    *
-   * @param \ConnectID\Api\DataModel\ConnectIdProfile $profile
+   * @param \ConnectId\Api\DataModel\ConnectIdProfile $profile
    * @param array $data
    */
   public static function setDataFromKeys(ConnectIdProfile $profile, array $data) {
@@ -401,7 +401,7 @@ class ConnectIdProfile implements ResourceOwnerInterface {
   /**
    * @param array $credential
    *
-   * @return \ConnectID\Api\DataModel\ConnectIdProfile
+   * @return \ConnectId\Api\DataModel\ConnectIdProfile
    */
   public function withCombinedCredential(array $credential): ConnectIdProfile {
     /*

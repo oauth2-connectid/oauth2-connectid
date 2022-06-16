@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace ConnectId\OAuth2\Client\Provider;
 
 
-use ConnectID\Api\DataModel\ConnectIdProfile;
-use ConnectID\Api\DataModel\CouponTypeList;
-use ConnectID\Api\DataModel\Order;
-use ConnectID\Api\DataModel\OrderStatus;
-use ConnectID\Api\DataModel\ProductType;
-use ConnectID\Api\DataModel\ProductTypeList;
+use ConnectId\Api\DataModel\ConnectIdProfile;
+use ConnectId\Api\DataModel\CouponTypeList;
+use ConnectId\Api\DataModel\Order;
+use ConnectId\Api\DataModel\OrderStatus;
+use ConnectId\Api\DataModel\ProductType;
+use ConnectId\Api\DataModel\ProductTypeList;
 use League\OAuth2\Client\Provider\AbstractProvider;
 use League\OAuth2\Client\Token\AccessToken;
 use League\OAuth2\Client\Token\AccessTokenInterface;
@@ -158,7 +158,7 @@ class ConnectId extends AbstractProvider {
    *
    * @param  string  $orderId
    *
-   * @return \ConnectID\Api\DataModel\OrderStatus
+   * @return \ConnectId\Api\DataModel\OrderStatus
    * @throws \League\OAuth2\Client\Provider\Exception\IdentityProviderException
    */
   public function clientApi_getOrderStatus(string $orderId): OrderStatus {
@@ -201,13 +201,13 @@ class ConnectId extends AbstractProvider {
    *
    * @see https://doc.mediaconnect.no/doc/ConnectID/#operation/orderclient
    *
-   * @param  \ConnectID\Api\DataModel\Order  $order
+   * @param  \ConnectId\Api\DataModel\Order  $order
    *  the order to submit.
    *
    * @param  \League\OAuth2\Client\Token\AccessTokenInterface|null  $accessToken
    *   Optional access toke to use in the request, if none is provided a new one is fetched.
    *
-   * @return \ConnectID\Api\DataModel\Order
+   * @return \ConnectId\Api\DataModel\Order
    * @throws \League\OAuth2\Client\Provider\Exception\IdentityProviderException
    */
   public function clientApi_registerOrder(Order $order, AccessTokenInterface $accessToken = NULL): Order {
@@ -242,9 +242,9 @@ class ConnectId extends AbstractProvider {
    * @see https://doc.mediaconnect.no/doc/ConnectID/#operation/order
    *
    * @param  \League\OAuth2\Client\Token\AccessTokenInterface  $accessToken
-   * @param  \ConnectID\Api\DataModel\Order  $order
+   * @param  \ConnectId\Api\DataModel\Order  $order
    *
-   * @return \ConnectID\Api\DataModel\Order
+   * @return \ConnectId\Api\DataModel\Order
    * @throws \League\OAuth2\Client\Provider\Exception\IdentityProviderException
    */
   public function submitApiOrder(AccessTokenInterface $accessToken, Order $order): Order {
@@ -364,7 +364,7 @@ class ConnectId extends AbstractProvider {
    *
    * @param  \League\OAuth2\Client\Token\AccessTokenInterface|null  $accessToken
    *
-   * @return \ConnectID\Api\DataModel\CouponTypeList
+   * @return \ConnectId\Api\DataModel\CouponTypeList
    * @throws \League\OAuth2\Client\Provider\Exception\IdentityProviderException
    */
   public function clientApi_getProductCoupons(string $productCode, AccessTokenInterface $accessToken = NULL): CouponTypeList {

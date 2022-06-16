@@ -6,7 +6,7 @@
  * Time: 16:51
  */
 
-namespace ConnectID\Api\DataModel;
+namespace ConnectId\Api\DataModel;
 
 
 interface TypeListInterface extends \Countable, \Iterator {
@@ -14,7 +14,7 @@ interface TypeListInterface extends \Countable, \Iterator {
   /**
    * @param array $list
    *
-   * @return \ConnectID\Api\DataModel\TypeListInterface
+   * @return \ConnectId\Api\DataModel\TypeListInterface
    */
   public static function fromDataArray(array $list): TypeListInterface;
 }

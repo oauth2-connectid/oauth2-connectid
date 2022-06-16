@@ -1,6 +1,6 @@
 <?php
 
-namespace ConnectID\Api\DataModel;
+namespace ConnectId\Api\DataModel;
 
 class Order extends BasicData {
 
@@ -75,12 +75,12 @@ class Order extends BasicData {
   protected $customerReference;
 
   /**
-   * @var \ConnectID\Api\DataModel\Address
+   * @var \ConnectId\Api\DataModel\Address
    */
   protected $payer;
 
   /**
-   * @var \ConnectID\Api\DataModel\OrderLineList
+   * @var \ConnectId\Api\DataModel\OrderLineList
    */
   protected $orderLines;
 
@@ -90,7 +90,7 @@ class Order extends BasicData {
   protected $prepaid;
 
   /**
-   * @var \ConnectID\Api\DataModel\PaymentInfo
+   * @var \ConnectId\Api\DataModel\PaymentInfo
    */
   protected $paymentInfo;
 
@@ -265,36 +265,36 @@ class Order extends BasicData {
   }
 
   /**
-   * @return \ConnectID\Api\DataModel\Address
+   * @return \ConnectId\Api\DataModel\Address
    */
-  public function getPayer(): \ConnectID\Api\DataModel\Address {
+  public function getPayer(): \ConnectId\Api\DataModel\Address {
     return $this->payer;
   }
 
   /**
-   * @param \ConnectID\Api\DataModel\Address $payer
+   * @param \ConnectId\Api\DataModel\Address $payer
    *
    * @return Order
    */
-  public function withPayer(\ConnectID\Api\DataModel\Address $payer): Order {
+  public function withPayer(\ConnectId\Api\DataModel\Address $payer): Order {
     $this->payer = $payer;
     return $this;
   }
 
   /**
-   * @return \ConnectID\Api\DataModel\OrderLineList
+   * @return \ConnectId\Api\DataModel\OrderLineList
    */
-  public function getOrderLines(): \ConnectID\Api\DataModel\OrderLineList {
+  public function getOrderLines(): \ConnectId\Api\DataModel\OrderLineList {
     return $this->orderLines;
   }
 
 
   /**
-   * @param \ConnectID\Api\DataModel\OrderLineList $orderLines
+   * @param \ConnectId\Api\DataModel\OrderLineList $orderLines
    *
    * @return Order
    */
-  public function withOrderLine(\ConnectID\Api\DataModel\OrderLine $orderLine): Order {
+  public function withOrderLine(\ConnectId\Api\DataModel\OrderLine $orderLine): Order {
     if (empty($this->orderLines)) {
       $this->orderLines = new OrderLineList();
     }
@@ -303,11 +303,11 @@ class Order extends BasicData {
   }
 
   /**
-   * @param \ConnectID\Api\DataModel\OrderLineList $orderLines
+   * @param \ConnectId\Api\DataModel\OrderLineList $orderLines
    *
    * @return Order
    */
-  public function withOrderLines(\ConnectID\Api\DataModel\OrderLineList $orderLines): Order {
+  public function withOrderLines(\ConnectId\Api\DataModel\OrderLineList $orderLines): Order {
     $this->orderLines = $orderLines;
     return $this;
   }
@@ -322,7 +322,7 @@ class Order extends BasicData {
   /**
    * @see self::setPrepaid()
    *
-   * @return \ConnectID\Api\DataModel\Order
+   * @return \ConnectId\Api\DataModel\Order
    */
   public function withPrepaid(bool $prepaid): Order {
     $this->setPrepaid($prepaid);
@@ -339,18 +339,18 @@ class Order extends BasicData {
   }
 
   /**
-   * @return \ConnectID\Api\DataModel\PaymentInfo
+   * @return \ConnectId\Api\DataModel\PaymentInfo
    */
-  public function getPaymentInfo(): \ConnectID\Api\DataModel\PaymentInfo {
+  public function getPaymentInfo(): \ConnectId\Api\DataModel\PaymentInfo {
     return $this->paymentInfo;
   }
 
   /**
-   * @param \ConnectID\Api\DataModel\PaymentInfo $paymentInfo
+   * @param \ConnectId\Api\DataModel\PaymentInfo $paymentInfo
    *
    * @return Order
    */
-  public function withPaymentInfo(\ConnectID\Api\DataModel\PaymentInfo $paymentInfo): Order {
+  public function withPaymentInfo(\ConnectId\Api\DataModel\PaymentInfo $paymentInfo): Order {
     $this->paymentInfo = $paymentInfo;
     return $this;
   }
