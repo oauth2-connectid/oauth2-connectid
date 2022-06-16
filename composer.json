@@ -1,12 +1,15 @@
 {
-    "name": "ramsalt/oauth2-connectid",
+    "name": "oauth2-connectid/oauth2-connectid",
     "description": "MediaConnect OAuth 2.0 Client Provider for The PHP League OAuth2-Client",
     "license": "GPL-3.0-or-later",
     "authors": [
         {
             "name": "Marlon Saglia",
             "email": "esolitos@gmail.com"
-        }
+        },
+	{
+	    "name": "Ramsalt Lab"
+	}
     ],
     "keywords": [
         "oauth",
