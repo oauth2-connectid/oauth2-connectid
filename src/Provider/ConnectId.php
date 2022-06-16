@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Ramsalt\OAuth2\Client\Provider;
+namespace ConnectId\OAuth2\Client\Provider;
 
 
 use ConnectID\Api\DataModel\ConnectIdProfile;
@@ -16,9 +16,9 @@ use League\OAuth2\Client\Token\AccessToken;
 use League\OAuth2\Client\Token\AccessTokenInterface;
 use League\OAuth2\Client\Tool\BearerAuthorizationTrait;
 use Psr\Http\Message\ResponseInterface;
-use Ramsalt\OAuth2\Client\Provider\Exception\InvalidAccessTokenException;
-use Ramsalt\OAuth2\Client\Provider\Exception\InvalidApiResponseException;
-use Ramsalt\OAuth2\Client\Provider\Exception\InvalidGrantException;
+use ConnectId\OAuth2\Client\Provider\Exception\InvalidAccessTokenException;
+use ConnectId\OAuth2\Client\Provider\Exception\InvalidApiResponseException;
+use ConnectId\OAuth2\Client\Provider\Exception\InvalidGrantException;
 use RuntimeException;
 use UnexpectedValueException;
 

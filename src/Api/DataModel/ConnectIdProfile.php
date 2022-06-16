@@ -25,9 +25,6 @@ use League\OAuth2\Client\Provider\ResourceOwnerInterface;
  *     } ],
  *     "emails" : [ "firstname.lastname@mediaconnect.no", "test@mediaconnect.no" ]
  * }
- *
- *
- * @package Ramsalt\OAuth2\Client\Provider
  */
 class ConnectIdProfile implements ResourceOwnerInterface {
 

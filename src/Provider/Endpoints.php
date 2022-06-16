@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Ramsalt\OAuth2\Client\Provider;
+namespace ConnectId\OAuth2\Client\Provider;
 
 
 /**

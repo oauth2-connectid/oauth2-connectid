@@ -5,11 +5,13 @@
     "authors": [
         {
             "name": "Marlon Saglia",
-            "email": "esolitos@gmail.com"
+            "email": "oauth2-connectid@esolitos.com"
         },
-	{
-	    "name": "Ramsalt Lab"
-	}
+        {
+            "name": "Ramsalt Lab",
+            "homepage": "https://ramsalt.com",
+            "role": "Development of v1"
+        }
     ],
     "keywords": [
         "oauth",
@@ -28,13 +30,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Ramsalt\\OAuth2\\Client\\": "src/",
+            "ConnectId\\OAuth2\\Client\\": "src/",
             "ConnectID\\Api\\": "src/Api"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Ramsalt\\OAuth2\\Client\\Test\\": "tests/src/"
         }
     },
     "minimum-stability": "stable"

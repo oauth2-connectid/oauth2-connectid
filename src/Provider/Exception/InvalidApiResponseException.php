@@ -1,6 +1,6 @@
 <?php
 
-namespace Ramsalt\OAuth2\Client\Provider\Exception;
+namespace ConnectId\OAuth2\Client\Provider\Exception;
 
 
 class InvalidApiResponseException extends \Exception
