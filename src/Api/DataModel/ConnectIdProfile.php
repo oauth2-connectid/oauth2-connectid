@@ -103,8 +103,6 @@ class ConnectIdProfile implements ResourceOwnerInterface {
       }
     }
 
-
-
     // Simply import the databased on name
     self::setDataFromKeys($profile, $data);
 
@@ -416,6 +414,10 @@ class ConnectIdProfile implements ResourceOwnerInterface {
     $this->credential = $credential['credential'];
     $this->credentialType = $credential['credentialType'];
 
+    // Add email credential when provided
+    if ($this->credentialType === self::CREDENTIAL_EMAIL) {
+      $this->addEmail($this->credential);
+    }
 
     return $this;
   }
