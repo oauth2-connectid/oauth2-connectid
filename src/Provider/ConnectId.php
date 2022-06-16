@@ -13,6 +13,7 @@ use ConnectID\Api\DataModel\ProductType;
 use ConnectID\Api\DataModel\ProductTypeList;
 use League\OAuth2\Client\Provider\AbstractProvider;
 use League\OAuth2\Client\Token\AccessToken;
+use League\OAuth2\Client\Token\AccessTokenInterface;
 use League\OAuth2\Client\Tool\BearerAuthorizationTrait;
 use Psr\Http\Message\ResponseInterface;
 use Ramsalt\OAuth2\Client\Provider\Exception\InvalidAccessTokenException;
@@ -71,12 +72,12 @@ class ConnectId extends AbstractProvider {
   /**
    * Requests a new access_token using the provided refresh_token.
    *
-   * @param  \League\OAuth2\Client\Token\AccessToken  $accessToken
+   * @param  \League\OAuth2\Client\Token\AccessTokenInterface  $accessToken
    *
-   * @return \League\OAuth2\Client\Token\AccessToken
+   * @return \League\OAuth2\Client\Token\AccessTokenInterface
    * @throws \League\OAuth2\Client\Provider\Exception\IdentityProviderException
    */
-  public function getRefreshedAccessToken(AccessToken $accessToken): AccessToken {
+  public function getRefreshedAccessToken(AccessTokenInterface $accessToken): AccessTokenInterface {
     return $this->getAccessToken(
       'refresh_token',
       [
@@ -92,12 +93,12 @@ class ConnectId extends AbstractProvider {
    * @see https://doc.mediaconnect.no/doc/ConnectID/v1/api/customer/product.html#Product_API
    * @see https://doc.mediaconnect.no/doc/ConnectID/#tag/Product/paths/~1v1~1customer~1product/get
    *
-   * @param  \League\OAuth2\Client\Token\AccessToken  $token
+   * @param  \League\OAuth2\Client\Token\AccessTokenInterface  $token
    *
    * @return array
    * @throws \League\OAuth2\Client\Provider\Exception\IdentityProviderException
    */
-  public function getApiCustomerProduct(AccessToken $token): array {
+  public function getApiCustomerProduct(AccessTokenInterface $token): array {
     $url = Endpoints::getClientApiUrl('v1/customer/product', $this->testing);
     $request = $this->getAuthenticatedRequest(self::METHOD_GET, $url, $token);
 
@@ -119,12 +120,12 @@ class ConnectId extends AbstractProvider {
    * @see https://doc.mediaconnect.no/doc/ConnectID/v1/api/order.html#PaymentInfo
    * @see https://doc.mediaconnect.no/doc/ConnectID/#tag/Order/paths/~1v1~1order~1status/get
    *
-   * @param  \League\OAuth2\Client\Token\AccessToken  $accessToken
+   * @param  \League\OAuth2\Client\Token\AccessTokenInterface  $accessToken
    *
    * @return array
    * @throws \League\OAuth2\Client\Provider\Exception\IdentityProviderException
    */
-  public function getApiOrdersOverview(AccessToken $accessToken): array {
+  public function getApiOrdersOverview(AccessTokenInterface $accessToken): array {
     $url = Endpoints::getClientApiUrl('v1/order/status', $this->testing);
     $request = $this->getAuthenticatedRequest(self::METHOD_GET, $url, $accessToken);
     $response = $this->getParsedResponse($request);
@@ -184,10 +185,10 @@ class ConnectId extends AbstractProvider {
   /**
    * Requests a new access token granting "client_credentials".
    *
-   * @return \League\OAuth2\Client\Token\AccessToken
+   * @return \League\OAuth2\Client\Token\AccessTokenInterface
    * @throws \League\OAuth2\Client\Provider\Exception\IdentityProviderException
    */
-  public function getClientCredentialsAccessToken(): AccessToken {
+  public function getClientCredentialsAccessToken(): AccessTokenInterface {
     return $this->getAccessToken('client_credentials');
   }
 
@@ -203,13 +204,13 @@ class ConnectId extends AbstractProvider {
    * @param  \ConnectID\Api\DataModel\Order  $order
    *  the order to submit.
    *
-   * @param  \League\OAuth2\Client\Token\AccessToken|null  $accessToken
+   * @param  \League\OAuth2\Client\Token\AccessTokenInterface|null  $accessToken
    *   Optional access toke to use in the request, if none is provided a new one is fetched.
    *
    * @return \ConnectID\Api\DataModel\Order
    * @throws \League\OAuth2\Client\Provider\Exception\IdentityProviderException
    */
-  public function clientApi_registerOrder(Order $order, AccessToken $accessToken = NULL): Order {
+  public function clientApi_registerOrder(Order $order, AccessTokenInterface $accessToken = NULL): Order {
     $url = Endpoints::getClientApiUrl('v1/client/order', $this->testing);
     $options = [
       'body' => $order->toJson(),
@@ -240,13 +241,13 @@ class ConnectId extends AbstractProvider {
    *
    * @see https://doc.mediaconnect.no/doc/ConnectID/#operation/order
    *
-   * @param  \League\OAuth2\Client\Token\AccessToken  $accessToken
+   * @param  \League\OAuth2\Client\Token\AccessTokenInterface  $accessToken
    * @param  \ConnectID\Api\DataModel\Order  $order
    *
    * @return \ConnectID\Api\DataModel\Order
    * @throws \League\OAuth2\Client\Provider\Exception\IdentityProviderException
    */
-  public function submitApiOrder(AccessToken $accessToken, Order $order): Order {
+  public function submitApiOrder(AccessTokenInterface $accessToken, Order $order): Order {
     $url = Endpoints::getClientApiUrl('v1/order', $this->testing);
     $options = [
       'body' => $order->toJson(),
@@ -318,12 +319,12 @@ class ConnectId extends AbstractProvider {
    *
    * @see https://doc.mediaconnect.no/doc/ConnectID/#tag/Product/paths/~1v1~1client~1product~1{productType}/get
    *
-   * @param  \League\OAuth2\Client\Token\AccessToken|null  $accessToken
+   * @param  \League\OAuth2\Client\Token\AccessTokenInterface|null  $accessToken
    *
    * @return ProductTypeList
    * @throws \League\OAuth2\Client\Provider\Exception\IdentityProviderException
    */
-  public function getClientApiProducts(AccessToken $accessToken = NULL): ProductTypeList {
+  public function getClientApiProducts(AccessTokenInterface $accessToken = NULL): ProductTypeList {
     $url = Endpoints::getClientApiUrl('v1/client/product', $this->testing);
     if (!$accessToken) {
       $accessToken = $this->getClientCredentialsAccessToken();
@@ -345,7 +346,7 @@ class ConnectId extends AbstractProvider {
    * @deprecated Use ::clientApi_getProductCoupons()
    * @noinspection ALL
    */
-  public function getClientApiCoupons(ProductType $productType, AccessToken $accessToken = NULL): CouponTypeList {
+  public function getClientApiCoupons(ProductType $productType, AccessTokenInterface $accessToken = NULL): CouponTypeList {
     trigger_error('Deprecated: Use ' . __CLASS__ . '::clientApi_getProductCoupons() instead.', E_USER_DEPRECATED);
     return $this->clientApi_getProductCoupons(
       $productType->getProduct(),
@@ -361,12 +362,12 @@ class ConnectId extends AbstractProvider {
    *
    * @param  string  $productCode
    *
-   * @param  \League\OAuth2\Client\Token\AccessToken|null  $accessToken
+   * @param  \League\OAuth2\Client\Token\AccessTokenInterface|null  $accessToken
    *
    * @return \ConnectID\Api\DataModel\CouponTypeList
    * @throws \League\OAuth2\Client\Provider\Exception\IdentityProviderException
    */
-  public function clientApi_getProductCoupons(string $productCode, AccessToken $accessToken = NULL): CouponTypeList {
+  public function clientApi_getProductCoupons(string $productCode, AccessTokenInterface $accessToken = NULL): CouponTypeList {
     $url = Endpoints::getClientApiUrl('v1/client/coupon/' . $productCode, $this->testing);
     if (!$accessToken) {
       $accessToken = $this->getClientCredentialsAccessToken();
