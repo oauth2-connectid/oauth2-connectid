@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 namespace ConnectId\OAuth2\Client\Provider;
 
