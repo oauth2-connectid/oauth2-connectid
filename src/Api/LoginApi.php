@@ -51,7 +51,7 @@ class LoginApi extends ConnectId implements LoginApiInterface {
   /**
    * @inheritDoc
    */
-  public function getApiCustomerProduct(AccessTokenInterface $accessToken): array {
+  public function getCustomerProducts(AccessTokenInterface $accessToken): array {
     $url = Endpoints::getApiUrl('v1/customer/product', $this->testing);
     $request = $this->getAuthenticatedRequest(self::METHOD_GET, $url, $accessToken);
     $response = $this->getParsedResponse($request);

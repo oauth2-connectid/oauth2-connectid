@@ -35,7 +35,7 @@ interface LoginApiInterface {
    *
    * @return array
    */
-  public function getApiCustomerProduct(AccessTokenInterface $accessToken): array;
+  public function getCustomerProducts(AccessTokenInterface $accessToken): array;
 
   /**
    * Lists the user's active subscriptions.
