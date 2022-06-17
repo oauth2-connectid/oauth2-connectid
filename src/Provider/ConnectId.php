@@ -92,8 +92,8 @@ class ConnectId extends AbstractProvider implements ConnectIdClientInterface {
     if ($statusCode === 400 && isset($data['exceptionType'], $data['errorMessage'])) {
       throw new InvalidApiResponseException(
         "[{$data['exceptionType']}] {$data['errorMessage']}",
-        $statusCode,
-        $response
+        $response,
+        $data
       );
     }
 
@@ -110,7 +110,7 @@ class ConnectId extends AbstractProvider implements ConnectIdClientInterface {
       if (isset($data['error_description'])) {
         $message .= ': ' . $data['error_description'];
       }
-      throw new InvalidGrantException($message, $statusCode, $response);
+      throw new InvalidGrantException($message, $statusCode, $response->getBody()->rewind()->getContents());
     }
 
     // Check if the error is to be attributed to an expired Access Token.
@@ -143,7 +143,7 @@ class ConnectId extends AbstractProvider implements ConnectIdClientInterface {
         $message = $response->getReasonPhrase();
       }
 
-      throw new InvalidApiResponseException($message, $statusCode, $response);
+      throw new InvalidApiResponseException($message, $response, $data);
     }
   }
 
