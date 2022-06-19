@@ -5,7 +5,9 @@ namespace ConnectId\Api\DataModel;
 class Order extends BasicData {
 
   /** @var string Paying by using a credit card via Nets */
-  const PAYMENT_TYPE_CARD = 'creditcard';
+  const PAYMENT_TYPE_CARD_NETS = 'creditcard';
+  /** @var string Paying by using a credit card via Nets */
+  const PAYMENT_TYPE_CARD_PAYEX = 'creditcardPayex';
   /** @var string Paying by sending a invoice */
   const PAYMENT_TYPE_INVOICE = 'invoice';
   /** @var string It is free of cost*/
