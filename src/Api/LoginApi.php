@@ -69,7 +69,7 @@ class LoginApi extends ConnectId implements LoginApiInterface {
    * @inheritDoc
    */
   public function submitOrder(AccessTokenInterface $accessToken, Order $order): Order {
-    $url = Endpoints::getLoginUrl('v1/order', $this->testing);
+    $url = Endpoints::getApiUrl('v1/order', $this->testing);
     $options = [
       'body' => $order->toJson(),
     ];
