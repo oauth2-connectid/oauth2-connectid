@@ -3,13 +3,9 @@
 namespace ConnectId\Api\DataModel;
 
 
-abstract class BasicList {
+abstract class BasicList implements \Countable, \Iterator  {
 
-  protected $items;
-
-  public function __construct() {
-    $this->items = [];
-  }
+  protected array $items = [];
 
   public function count() {
     return count($this->items);
@@ -20,19 +16,19 @@ abstract class BasicList {
   }
 
   public function next() {
-    return current($this->items);
+    return next($this->items);
   }
 
   public function key() {
     return key($this->items);
   }
 
-  public function valid() {
-    return valid($this->items);
+  public function valid():bool {
+    return isset($this->items[$this->key()]);
   }
 
   public function rewind() {
-    return rewind($this->items);
+    return reset($this->items);
   }
 
   public function toArray(): array {

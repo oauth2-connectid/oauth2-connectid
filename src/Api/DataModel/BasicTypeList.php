@@ -38,7 +38,7 @@ abstract class BasicTypeList extends BasicList implements \Countable, \Iterator 
     reset($this->listOfTypes);
   }
 
-  public function valid() {
+  public function valid() :bool {
     return isset($this->listOfTypes[$this->key()]);
   }
 }
