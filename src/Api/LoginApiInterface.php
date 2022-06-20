@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace ConnectId\Api;
 
 
+use ConnectId\Api\DataModel\CustomerProductList;
 use ConnectId\Api\DataModel\Order;
 use ConnectId\Api\DataModel\SubscriptionList;
 use League\OAuth2\Client\Token\AccessTokenInterface;
@@ -33,9 +34,10 @@ interface LoginApiInterface {
    * @param  \League\OAuth2\Client\Token\AccessTokenInterface  $accessToken
    *   Access token to identify the user.
    *
-   * @return array
+   * @return \ConnectId\Api\DataModel\CustomerProductList
+   *   List of products owned by the customer.
    */
-  public function getCustomerProducts(AccessTokenInterface $accessToken): array;
+  public function getCustomerProducts(AccessTokenInterface $accessToken): CustomerProductList;
 
   /**
    * Lists the user's active subscriptions.

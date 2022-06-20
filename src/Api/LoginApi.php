@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace ConnectId\Api;
 
+use ConnectId\Api\DataModel\CustomerProductList;
 use ConnectId\Api\DataModel\Order;
 use ConnectId\Api\DataModel\SubscriptionList;
 use ConnectId\OAuth2\Client\Provider\ConnectId;
@@ -51,18 +52,18 @@ class LoginApi extends ConnectId implements LoginApiInterface {
   /**
    * @inheritDoc
    */
-  public function getCustomerProducts(AccessTokenInterface $accessToken): array {
+  public function getCustomerProducts(AccessTokenInterface $accessToken): CustomerProductList {
     $url = Endpoints::getApiUrl('v1/customer/product', $this->testing);
     $request = $this->getAuthenticatedRequest(self::METHOD_GET, $url, $accessToken);
     $response = $this->getParsedResponse($request);
 
-    if (FALSE === is_array($response)) {
+    if (FALSE === is_array($response) || !isset($response['products'])) {
       throw new UnexpectedValueException(
         'Invalid response received from Authorization Server. Expected JSON.'
       );
     }
 
-    return $response;
+    return CustomerProductList::fromDataArray($response['products']);
   }
 
   /**
