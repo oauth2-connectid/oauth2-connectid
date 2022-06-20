@@ -31,9 +31,9 @@ abstract class BasicData {
     return $object;
   }
 
-  public function toArray(): array {
+  public function toArray(bool $with_extra = TRUE): array {
     $properties = get_object_vars($this);
-    if (!empty($properties['extra'])) {
+    if ($with_extra && !empty($properties['extra'])) {
       // There should be no overlap due to the fact that we set 'extra' to be any
       // non-class property in the constructor.
       foreach ($properties['extra'] as $extra_key => $extra_property) {

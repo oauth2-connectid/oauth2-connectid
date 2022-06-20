@@ -361,7 +361,7 @@ class Order extends BasicData {
    * @return string
    */
   public function toJson(): string {
-    $data = $this->toArray();
+    $data = $this->toArray(FALSE);
 
     // Override date fields
     $data['orderDate'] = $this->getFormattedDate($this->orderDate);
