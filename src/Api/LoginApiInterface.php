@@ -69,4 +69,14 @@ interface LoginApiInterface {
    *   Could indicate errors with the API server or with the order, needs to be handled manually.
    */
   public function submitOrder(AccessTokenInterface $accessToken, Order $order): Order;
+
+  /**
+   * Returns a list of orders with a status.
+   *
+   * @see https://mediaconnect-api.redoc.ly/Production/tag/Order#paths/~1v1~1order~1status/get
+   *
+   * @return \ConnectId\Api\DataModel\OrderStatus[]
+   *   List of orders.
+   */
+  public function getOrderList(AccessTokenInterface $accessToken): array;
 }

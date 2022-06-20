@@ -36,17 +36,6 @@ interface ClientApiInterface {
   public function getCouponListForProduct(string $productCode): CouponTypeList;
 
   /**
-   * Returns a list of orders with a status.
-   *
-   * @see https://doc.mediaconnect.no/doc/ConnectID/v1/api/order.html#PaymentInfo
-   * @see https://doc.mediaconnect.no/doc/ConnectID/#tag/Order/paths/~1v1~1order~1status/get
-   *
-   * @return array
-   *   List of orders.
-   */
-  public function getOrderList(): array;
-
-  /**
    * Returns basic "status" regarding an order.
    *
    * @see https://doc.mediaconnect.no/doc/ConnectID/v1/api/order.html#PaymentInfo

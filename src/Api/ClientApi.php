@@ -65,23 +65,6 @@ class ClientApi extends ConnectId implements ClientApiInterface {
   /**
    * @inheritDoc
    */
-  public function getOrderList(): array {
-    $url = Endpoints::getApiUrl('v1/order/status', $this->testing);
-    $request = $this->getAuthenticatedRequest(self::METHOD_GET, $url, $this->getClientToken());
-    $response = $this->getParsedResponse($request);
-
-    if (FALSE === is_array($response)) {
-      throw new UnexpectedValueException(
-        'Invalid response received from Authorization Server. Expected JSON.'
-      );
-    }
-
-    return $response;
-  }
-
-  /**
-   * @inheritDoc
-   */
   public function getOrderStatus(string $orderId): OrderStatus {
     $url = Endpoints::getApiUrl('v1/client/order/status/' . $orderId, $this->testing);
     $request = $this->getAuthenticatedRequest(self::METHOD_GET, $url, $this->getClientToken())

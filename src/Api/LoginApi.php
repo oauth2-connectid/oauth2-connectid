@@ -86,4 +86,20 @@ class LoginApi extends ConnectId implements LoginApiInterface {
     return $order->withOrderId($response['orderId']);
   }
 
+  /**
+   * @inheritDoc
+   */
+  public function getOrderList(AccessTokenInterface $accessToken): array {
+    $url = Endpoints::getApiUrl('v1/order/status', $this->testing);
+    $request = $this->getAuthenticatedRequest(self::METHOD_GET, $url, $accessToken);
+    $response = $this->getParsedResponse($request);
+
+    if (FALSE === is_array($response)) {
+      throw new UnexpectedValueException(
+        'Invalid response received from Authorization Server. Expected JSON.'
+      );
+    }
+
+    return $response;
+  }
 }
