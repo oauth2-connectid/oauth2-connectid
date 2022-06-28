@@ -23,13 +23,28 @@ interface LoginApiInterface {
    *   A URL to redirect the user’s browser back to if something goes wrong.
    * @param string $credential
    *  The default user's credential, will still be editable by the user.
-   * @param bool $assumeNewUser
-   *    When true the registration process will be assumed.
    *
    * @return string
    *   You can redirect a user’s browser to this URL to let the user log in.
    */
-  public function getUserLoginUrl(string $returnUrl, string $errorUrl, string $credential = NULL, bool $assumeNewUser = FALSE): string;
+  public function getUserLoginUrl(string $returnUrl, string $errorUrl, string $credential = NULL): string;
+
+  /**
+   * Builds a URL to the "Create user" page in Conenct ID.
+   *
+   * @see https://mediaconnect-api.redoc.ly/Production/#section/About-the-URLs/GUI:-createUserUrl
+   *
+   * @param string  $returnUrl
+   *   A URL to redirect the user’s browser back to on success.
+   * @param string  $errorUrl
+   *   A URL to redirect the user’s browser back to if something goes wrong.
+   * @param string $credential
+   *  The default user's credential, will still be editable by the user.
+   *
+   * @return string
+   *   You can redirect a user’s browser to this URL to let the user log in.
+   */
+  public function getUserCreationUrl(string $returnUrl, string $errorUrl, string $credential = NULL): string;
 
   /**
    * Builds a URL to redirect the user to fulfill and order.
