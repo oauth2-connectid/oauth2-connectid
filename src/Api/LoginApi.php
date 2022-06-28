@@ -17,6 +17,24 @@ class LoginApi extends ConnectId implements LoginApiInterface {
   /**
    * @inheritDoc
    */
+  public function getUserLoginUrl(string $returnUrl, string $errorUrl, string $credential = NULL, bool $assumeNewUser = FALSE): string {
+    $params = [
+      'clientId'      => $this->clientId,
+      'returnUrl'     => $returnUrl,
+      'errorUrl'      => $errorUrl,
+      'assumeNewUser' => $assumeNewUser ? 'true' : 'false',
+    ];
+    if ($credential) {
+      $params['credential'] = $credential;
+    }
+    $url = Endpoints::getLoginUrl('login', $this->testing);
+    $query = $this->buildQueryString($params);
+    return $this->appendQuery($url, $query);
+  }
+
+  /**
+   * @inheritDoc
+   */
   public function getOrderFulfillmentUrl(string $orderId, string $returnUrl, string $errorUrl): string {
     $params = [
       'clientId'  => $this->clientId,

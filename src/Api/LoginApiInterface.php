@@ -13,6 +13,25 @@ use League\OAuth2\Client\Token\AccessTokenInterface;
 interface LoginApiInterface {
 
   /**
+   * Builds a URL to redirect the login page.
+   *
+   * @see https://mediaconnect-api.redoc.ly/Production/#section/About-the-URLs/GUI:-loginUrl
+   *
+   * @param string  $returnUrl
+   *   A URL to redirect the user’s browser back to on success.
+   * @param string  $errorUrl
+   *   A URL to redirect the user’s browser back to if something goes wrong.
+   * @param string $credential
+   *  The default user's credential, will still be editable by the user.
+   * @param bool $assumeNewUser
+   *    When true the registration process will be assumed.
+   *
+   * @return string
+   *   You can redirect a user’s browser to this URL to let the user log in.
+   */
+  public function getUserLoginUrl(string $returnUrl, string $errorUrl, string $credential = NULL, bool $assumeNewUser = FALSE): string;
+
+  /**
    * Builds a URL to redirect the user to fulfill and order.
    *
    * @see https://mediaconnect-api.redoc.ly/Production/#section/About-the-URLs/URL:-fulfillment
