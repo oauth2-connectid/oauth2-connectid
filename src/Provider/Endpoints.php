@@ -1,7 +1,8 @@
 <?php
 
+declare(strict_types=1);
 
-namespace Ramsalt\OAuth2\Client\Provider;
+namespace ConnectId\OAuth2\Client\Provider;
 
 
 /**
@@ -22,7 +23,7 @@ final class Endpoints {
   }
 
   public static function getResourceOwnerDetailsUrl(bool $testing = FALSE) {
-    return self::getClientApiUrl('v1/customer/profile', $testing);
+    return self::getApiUrl('v1/customer/profile', $testing);
   }
 
 
@@ -34,7 +35,7 @@ final class Endpoints {
    * @return string
    */
   public static function getOAuthUrl(string $extra_path, bool $testing = FALSE) {
-    return self::getLoginApiUrl("oauth/{$extra_path}", $testing);
+    return self::getLoginUrl("oauth/{$extra_path}", $testing);
   }
 
   /**
@@ -44,7 +45,7 @@ final class Endpoints {
    *
    * @return string
    */
-  public static function getLoginApiUrl(string $extra_path, bool $testing = FALSE): string {
+  public static function getLoginUrl(string $extra_path, bool $testing = FALSE): string {
     $base = ($testing) ? 'api-test.mediaconnect.no/login' : 'connectid.no/user';
 
     return "https://{$base}/{$extra_path}";
@@ -55,7 +56,7 @@ final class Endpoints {
    *
    * @return string
    */
-  public static function getClientApiUrl(string $extra_path, bool $testing = FALSE): string {
+  public static function getApiUrl(string $extra_path, bool $testing = FALSE): string {
     $domain = ($testing) ? 'api-test.mediaconnect.no' : 'api.mediaconnect.no';
 
     return "https://{$domain}/capi/{$extra_path}";

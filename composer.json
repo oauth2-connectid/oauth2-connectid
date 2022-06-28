@@ -5,11 +5,13 @@
     "authors": [
         {
             "name": "Marlon Saglia",
-            "email": "esolitos@gmail.com"
+            "email": "oauth2-connectid@esolitos.com"
         },
-	{
-	    "name": "Ramsalt Lab"
-	}
+        {
+            "name": "Ramsalt Lab",
+            "homepage": "https://ramsalt.com",
+            "role": "Development of v1"
+        }
     ],
     "keywords": [
         "oauth",
@@ -20,6 +22,7 @@
         "connectid"
     ],
     "require": {
+        "php": ">=7.4",
         "league/oauth2-client": " ^2.0"
     },
     "require-dev": {
@@ -27,13 +30,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Ramsalt\\OAuth2\\Client\\": "src/",
-            "ConnectID\\Api\\": "src/Api"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Ramsalt\\OAuth2\\Client\\Test\\": "tests/src/"
+            "ConnectId\\OAuth2\\Client\\": "src/",
+            "ConnectId\\Api\\": "src/Api"
         }
     },
     "minimum-stability": "stable"

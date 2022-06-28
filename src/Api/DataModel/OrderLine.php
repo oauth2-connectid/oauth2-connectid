@@ -1,6 +1,6 @@
 <?php
 
-namespace ConnectID\Api\DataModel;
+namespace ConnectId\Api\DataModel;
 
 
 class OrderLine extends BasicData {
@@ -66,12 +66,12 @@ class OrderLine extends BasicData {
   protected $rewardId;
 
   /**
-   * @var \ConnectID\Api\DataModel\Address
+   * @var \ConnectId\Api\DataModel\Address
    */
   protected $receiver;
 
   /**
-   * @var \ConnectID\Api\DataModel\Address
+   * @var \ConnectId\Api\DataModel\Address
    */
   protected $recruiter;
 
@@ -280,35 +280,35 @@ class OrderLine extends BasicData {
   }
 
   /**
-   * @return \ConnectID\Api\DataModel\Address
+   * @return \ConnectId\Api\DataModel\Address
    */
-  public function getReceiver(): \ConnectID\Api\DataModel\Address {
+  public function getReceiver(): \ConnectId\Api\DataModel\Address {
     return $this->receiver;
   }
 
   /**
-   * @param \ConnectID\Api\DataModel\Address $receiver
+   * @param \ConnectId\Api\DataModel\Address $receiver
    *
    * @return OrderLine
    */
-  public function withReceiver(\ConnectID\Api\DataModel\Address $receiver): OrderLine {
+  public function withReceiver(\ConnectId\Api\DataModel\Address $receiver): OrderLine {
     $this->receiver = $receiver;
     return $this;
   }
 
   /**
-   * @return \ConnectID\Api\DataModel\Address
+   * @return \ConnectId\Api\DataModel\Address
    */
-  public function getRecruiter(): \ConnectID\Api\DataModel\Address {
+  public function getRecruiter(): \ConnectId\Api\DataModel\Address {
     return $this->recruiter;
   }
 
   /**
-   * @param \ConnectID\Api\DataModel\Address $recruiter
+   * @param \ConnectId\Api\DataModel\Address $recruiter
    *
    * @return OrderLine
    */
-  public function withRecruiter(\ConnectID\Api\DataModel\Address $recruiter): OrderLine {
+  public function withRecruiter(\ConnectId\Api\DataModel\Address $recruiter): OrderLine {
     $this->recruiter = $recruiter;
     return $this;
   }

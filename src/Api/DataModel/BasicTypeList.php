@@ -1,6 +1,6 @@
 <?php
 
-namespace ConnectID\Api\DataModel;
+namespace ConnectId\Api\DataModel;
 
 
 abstract class BasicTypeList extends BasicList implements \Countable, \Iterator {
@@ -38,7 +38,7 @@ abstract class BasicTypeList extends BasicList implements \Countable, \Iterator 
     reset($this->listOfTypes);
   }
 
-  public function valid() {
+  public function valid() :bool {
     return isset($this->listOfTypes[$this->key()]);
   }
 }

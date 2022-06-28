@@ -1,6 +1,6 @@
 <?php
 
-namespace ConnectID\Api\DataModel;
+namespace ConnectId\Api\DataModel;
 
 
 class UserCredential extends BasicData {
@@ -99,7 +99,7 @@ class UserCredential extends BasicData {
     return $this;
   }
 
-  
+
 
   /**
    * @param string $type

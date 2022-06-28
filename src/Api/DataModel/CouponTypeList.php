@@ -1,6 +1,6 @@
 <?php
 
-namespace ConnectID\Api\DataModel;
+namespace ConnectId\Api\DataModel;
 
 
 class CouponTypeList extends BasicTypeList implements \ArrayAccess {
@@ -15,9 +15,9 @@ class CouponTypeList extends BasicTypeList implements \ArrayAccess {
   }
 
   /**
-   * @param \ConnectID\Api\DataModel\CouponType $product_type
+   * @param \ConnectId\Api\DataModel\CouponType $product_type
    *
-   * @return \ConnectID\Api\DataModel\CouponTypeList
+   * @return \ConnectId\Api\DataModel\CouponTypeList
    */
   public function withCoupon(CouponType $coupon): CouponTypeList {
     if ($code = $coupon->getCouponCode()) {
@@ -40,7 +40,7 @@ class CouponTypeList extends BasicTypeList implements \ArrayAccess {
   /**
    * @see \ArrayAccess::offsetGet()
    *
-   * @return \ConnectID\Api\DataModel\CouponType
+   * @return \ConnectId\Api\DataModel\CouponType
    */
   public function offsetGet($couponId) {
     return $this->listOfTypes[$couponId] ?? NULL;
