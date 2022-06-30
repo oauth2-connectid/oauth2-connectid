@@ -22,7 +22,7 @@ class CustomerProduct extends BasicData {
   /**
    * @see \ConnectId\Api\DataModel\CustomerProduct::$accessType
    */
-  public const ACCESS_NONE = 'C';
+  public const ACCESS_NONE = 'D';
 
   /**
    * The partner id the product below belongs to.
