@@ -61,14 +61,44 @@ abstract class BasicData {
 
   /**
    * Magical method to fetch info from the $extra property.
-   * @param $name
+   * @param string $name
+   *
+   * @deprecated This is replaced by self::getExtra()
    */
   public function __get($name) {
+    @trigger_error(
+      "Since oauth2-connectid/oauth2-connectid 2.0.0: accessing 'extra' properties directly is deprecated, please use " . __CLASS__ . "::getExtra()",
+      \E_USER_DEPRECATED
+    );
     if (isset($this->extra[$name])) {
       return $this->extra[$name];
     }
 
     throw new \InvalidArgumentException("Missing property {$name}.");
+  }
+
+  /**
+   * Return an idem from the "non-standard" sttributes.
+   *
+   * @param string $name
+   *   Name of the attribute.
+   * @param mixed $default
+   *   Default data to return in case the property is not set.
+   *
+   * @return mixed
+   *   The data or the default value.
+   */
+  public function getExtra(string $name, $default = NULL) {
+    return $this->extra[$name] ?? $default;
+  }
+
+  /**
+   * @param string $name
+   *
+   * @return bool
+   */
+  public function hasExtra(string $name): bool {
+    return isset($this->extra[$name]);
   }
 
   /**
