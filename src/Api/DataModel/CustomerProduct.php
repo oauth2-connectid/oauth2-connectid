@@ -187,7 +187,7 @@ class CustomerProduct extends BasicData {
    * @return CustomerProduct
    */
   public function withStartTime($startTime): CustomerProduct {
-    $this->startTime = $this->getDateTimeFromData($startTime);
+    $this->startTime = ($startTime !== NULL) ? $this->getDateTimeFromData($startTime) : NULL;
 
     return $this;
   }
@@ -217,7 +217,8 @@ class CustomerProduct extends BasicData {
    * @return CustomerProduct
    */
   public function withEndTime($endTime): CustomerProduct {
-    $this->endTime = $this->getDateTimeFromData($endTime);
+    $this->endTime = ($endTime !== NULL) ? $this->getDateTimeFromData($endTime) : NULL;
+
     return $this;
   }
 

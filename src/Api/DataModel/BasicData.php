@@ -134,8 +134,8 @@ abstract class BasicData {
       // UTC Time is defaulted
       $time_object = \DateTimeImmutable::createFromFormat('U', $value);
     }
-    elseif(!empty($value)) {
-      throw new \InvalidArgumentException("Time must be either a valid \DateTime(Immutable) object or a unix timestamp.");
+    else {
+      throw new \InvalidArgumentException("Time must be either a valid \DateTime, \DateTimeImmutable object or a UNIX timestamp.");
     }
 
     return $time_object;
