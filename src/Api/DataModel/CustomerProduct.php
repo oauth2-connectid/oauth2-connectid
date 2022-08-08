@@ -71,7 +71,6 @@ class CustomerProduct extends BasicData {
    */
   protected ?\DateTimeImmutable $startTime = NULL;
 
-
   /**
    * End of the current access period.
    *
@@ -178,12 +177,18 @@ class CustomerProduct extends BasicData {
   }
 
   /**
-   * @param \DateTimeImmutable|null $startTime
+   * Sets the "start time" for the customer product.
+   *
+   * @see self::$startTime
+   *
+   * @param \DateTimeImmutable|\DateTime|int $startTime
+   *   Either a \DateTimeImmutable, a \DateTime object or a unix timestamp (UTC).
    *
    * @return CustomerProduct
    */
-  public function withStartTime(?\DateTimeImmutable $startTime): CustomerProduct {
-    $this->startTime = $startTime;
+  public function withStartTime($startTime): CustomerProduct {
+    $this->startTime = $this->getDateTimeFromData($startTime);
+
     return $this;
   }
 
@@ -202,12 +207,17 @@ class CustomerProduct extends BasicData {
   }
 
   /**
-   * @param \DateTimeImmutable|null $endTime
+   * Sets the "end time" for the customer product.
+   *
+   * @see self::$endTime
+   *
+   * @param \DateTimeImmutable|\DateTime|int $endTime
+   *   Either a \DateTimeImmutable, a \DateTime object or a unix timestamp (UTC).
    *
    * @return CustomerProduct
    */
-  public function withEndTime(?\DateTimeImmutable $endTime): CustomerProduct {
-    $this->endTime = $endTime;
+  public function withEndTime($endTime): CustomerProduct {
+    $this->endTime = $this->getDateTimeFromData($endTime);
     return $this;
   }
 

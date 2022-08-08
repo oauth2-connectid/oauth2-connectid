@@ -102,12 +102,14 @@ abstract class BasicData {
   }
 
   /**
+   * Transform any date format into a \DateTimeImmutable,
+   *
    * @param \DateTimeImmutable|\DateTime|int $value
    *   Either a \DateTimeImmutable, a \DateTime object or a unix timestamp (UTC).
    *
    * @return \DateTimeImmutable
    */
-  protected function getDateTimeFromData($value) {
+  protected function getDateTimeFromData($value): \DateTimeImmutable {
     $time_object = NULL;
     if (is_object($value)) {
       if (is_a($value, \DateTimeImmutable::class)) {
