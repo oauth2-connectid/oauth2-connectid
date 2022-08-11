@@ -6,6 +6,7 @@ namespace ConnectId\Api;
 
 use ConnectId\Api\DataModel\CouponTypeList;
 use ConnectId\Api\DataModel\OrderStatus;
+use ConnectId\Api\DataModel\ProductType;
 use ConnectId\Api\DataModel\ProductTypeList;
 use League\OAuth2\Client\Token\AccessTokenInterface;
 
@@ -48,6 +49,19 @@ interface ClientApiInterface {
    *   The order status.
    */
   public function getOrderStatus(string $orderId): OrderStatus;
+
+  /**
+   * Fetches the info about a single product.
+   *
+   * @see https://doc.mediaconnect.no/doc/ConnectID/#tag/Product/paths/~1v1~1client~1product~1{productType}/get
+   *
+   * @param string $productId
+   *   Product identifier.
+   *
+   * @return \ConnectId\Api\DataModel\ProductType|null
+   *   The product info, when found.
+   */
+  public function getProductInfo(string $productId): ?ProductType;
 
   /**
    * Returns a list of products.

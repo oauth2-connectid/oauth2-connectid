@@ -6,6 +6,7 @@ namespace ConnectId\Api;
 
 use ConnectId\Api\DataModel\CouponTypeList;
 use ConnectId\Api\DataModel\OrderStatus;
+use ConnectId\Api\DataModel\ProductType;
 use ConnectId\Api\DataModel\ProductTypeList;
 use ConnectId\OAuth2\Client\Provider\ConnectId;
 use ConnectId\OAuth2\Client\Provider\Endpoints;
@@ -81,6 +82,25 @@ class ClientApi extends ConnectId implements ClientApiInterface {
     $order_data = reset($response['orders']);
 
     return OrderStatus::create($order_data);
+  }
+
+  /**
+   * @inheritDoc
+   */
+  public function getProductInfo(string $productId): ?ProductType {
+    $url = Endpoints::getApiUrl('v1/client/product', $this->testing);
+    $url = $url . '?' . http_build_query(['productId' => $productId]);
+
+    $request = $this->getAuthenticatedRequest(self::METHOD_GET, $url, $this->getClientToken());
+    $response = $this->getParsedResponse($request);
+
+    if (!is_array($response) || !isset($response['products'])) {
+      throw new UnexpectedValueException(
+        'Invalid response received from API Server. Expected json with a "products" key.'
+      );
+    }
+
+    return count($response['products']) ? ProductType::fromDataArray(array_pop($response['products'])) : NULL;
   }
 
   /**
