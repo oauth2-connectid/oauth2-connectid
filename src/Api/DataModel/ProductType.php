@@ -153,13 +153,13 @@ class ProductType extends BasicType {
   }
 
   /**
-   * @param \DateTimeImmutable|\DateTime|int $startTime
+   * @param \DateTimeImmutable|\DateTime|int $timeValue
    *   Either a \DateTimeImmutable, a \DateTime object or a unix timestamp (UTC).
    *
    * @return ProductType
    */
   public function withStartTime($timeValue): ProductType {
-    $this->startTime = $this->getDateTimeFromData($timeValue);
+    $this->startTime = !empty($timeValue) ? $this->getDateTimeFromData($timeValue) : NULL;
 
     return $this;
   }
@@ -172,13 +172,14 @@ class ProductType extends BasicType {
   }
 
   /**
-   * @param \DateTimeImmutable|\DateTime|int $startTime
+   * @param \DateTimeImmutable|\DateTime|int $timeValue
    *   Either a \DateTimeImmutable, a \DateTime object or a unix timestamp (UTC).
    *
    * @return ProductType
    */
   public function withEndTime($timeValue): ProductType {
-    $this->startTime = $this->getDateTimeFromData($timeValue);
+    $this->endTime = !empty($timeValue) ? $this->getDateTimeFromData($timeValue) : NULL;
+
     return $this;
   }
 
