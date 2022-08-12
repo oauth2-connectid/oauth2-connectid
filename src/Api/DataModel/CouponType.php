@@ -5,6 +5,8 @@ namespace ConnectId\Api\DataModel;
 
 class CouponType extends BasicType {
 
+  use StartEndTimeTrait;
+
   /**
    * @var string
    */
@@ -14,16 +16,6 @@ class CouponType extends BasicType {
    * @var int
    */
   protected $couponNumber;
-
-  /**
-   * @var \DateTimeImmutable|null
-   */
-  protected $startTime;
-
-  /**
-   * @var \DateTimeImmutable|null
-   */
-  protected $endTime;
 
   /**
    * @var string
@@ -88,44 +80,6 @@ class CouponType extends BasicType {
    */
   public function withCouponNumber(int $couponNumber): CouponType {
     $this->couponNumber = $couponNumber;
-    return $this;
-  }
-
-  /**
-   * @return \DateTimeImmutable|null
-   */
-  public function getStartTime(): \DateTimeImmutable {
-    return $this->startTime;
-  }
-
-  /**
-   * @param \DateTimeImmutable|null $startTime
-   *
-   * @return CouponType
-   */
-  public function withStartTime($startTime): CouponType {
-    if ($startTime) {
-      $this->startTime = $this->getDateTimeFromData($startTime);;
-    }
-    return $this;
-  }
-
-  /**
-   * @return \DateTimeImmutable|null
-   */
-  public function getEndTime(): \DateTimeImmutable {
-    return $this->endTime;
-  }
-
-  /**
-   * @param \DateTimeImmutable|null $endTime
-   *
-   * @return CouponType
-   */
-  public function withEndTime($endTime): CouponType {
-    if ($endTime) {
-      $this->endTime = $this->getDateTimeFromData($endTime);;
-    }
     return $this;
   }
 

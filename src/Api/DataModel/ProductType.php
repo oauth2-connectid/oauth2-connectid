@@ -5,6 +5,8 @@ namespace ConnectId\Api\DataModel;
 
 class ProductType extends BasicType {
 
+  use StartEndTimeTrait;
+
   /**
    * @var string
    */
@@ -24,16 +26,6 @@ class ProductType extends BasicType {
    * @var string
    */
   protected $productType;
-
-  /**
-   * @var \DateTimeImmutable
-   */
-  protected $startTime;
-
-  /**
-   * @var \DateTimeImmutable
-   */
-  protected $endTime;
 
   /**
    * @var float
@@ -142,44 +134,6 @@ class ProductType extends BasicType {
    */
   public function withProductType(?string $productType): ProductType {
     $this->productType = $productType;
-    return $this;
-  }
-
-  /**
-   * @return \DateTimeImmutable
-   */
-  public function getStartTime(): ?\DateTimeImmutable {
-    return $this->startTime;
-  }
-
-  /**
-   * @param \DateTimeImmutable|\DateTime|int $timeValue
-   *   Either a \DateTimeImmutable, a \DateTime object or a unix timestamp (UTC).
-   *
-   * @return ProductType
-   */
-  public function withStartTime($timeValue): ProductType {
-    $this->startTime = !empty($timeValue) ? $this->getDateTimeFromData($timeValue) : NULL;
-
-    return $this;
-  }
-
-  /**
-   * @return \DateTimeImmutable
-   */
-  public function getEndTime(): ?\DateTimeImmutable {
-    return $this->endTime;
-  }
-
-  /**
-   * @param \DateTimeImmutable|\DateTime|int $timeValue
-   *   Either a \DateTimeImmutable, a \DateTime object or a unix timestamp (UTC).
-   *
-   * @return ProductType
-   */
-  public function withEndTime($timeValue): ProductType {
-    $this->endTime = !empty($timeValue) ? $this->getDateTimeFromData($timeValue) : NULL;
-
     return $this;
   }
 
