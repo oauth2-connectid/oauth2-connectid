@@ -100,7 +100,7 @@ class ClientApi extends ConnectId implements ClientApiInterface {
       );
     }
 
-    return count($response['products']) ? ProductType::fromDataArray(array_pop($response['products'])) : NULL;
+    return count($response['products']) ? ProductType::create(array_pop($response['products'])) : NULL;
   }
 
   /**
