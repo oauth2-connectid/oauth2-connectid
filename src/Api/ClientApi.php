@@ -73,7 +73,7 @@ class ClientApi extends ConnectId implements ClientApiInterface {
     
     if (!is_array($response) || !isset($response['coupons'])) {
       throw new UnexpectedValueException(
-        'Invalid response received from API Server. Expected json with a "products" key.'
+        'Invalid response received from API Server. Expected json with a "coupons" key.'
       );
     }
     return CouponTypeList::fromDataArray($response['coupons']);
