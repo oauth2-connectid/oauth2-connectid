@@ -37,7 +37,7 @@ interface ClientApiInterface {
   public function getCouponListForProduct(string $productCode): CouponTypeList;
 
   /**
-   * Returns a list of coupons for a given product.
+   * Returns a list of coupons for a given voucher.
    *
    * @see https://mediaconnect-api.redoc.ly/Production/tag/Voucher-Coupons
    *
@@ -47,7 +47,7 @@ interface ClientApiInterface {
    * @return \ConnectId\Api\DataModel\CouponTypeList
    *   The list of coupon info.
    */
-  public function getCouponListForVoucher(string $productCode): CouponTypeList;
+  public function getCouponListForVoucher(string $voucherCode): CouponTypeList;
 
   /**
    * Returns basic "status" regarding an order.

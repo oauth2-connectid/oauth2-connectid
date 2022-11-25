@@ -70,6 +70,7 @@ class ClientApi extends ConnectId implements ClientApiInterface {
     $url = Endpoints::getApiUrl('v1/client/voucher/coupons/' . $voucherCode, $this->testing);
     $request = $this->getAuthenticatedRequest(self::METHOD_GET, $url, $this->getClientToken());
     $response = $this->getParsedResponse($request);
+    
     if (!is_array($response) || !isset($response['coupons'])) {
       throw new UnexpectedValueException(
         'Invalid response received from API Server. Expected json with a "products" key.'
