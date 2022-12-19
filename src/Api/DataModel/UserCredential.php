@@ -27,22 +27,6 @@ class UserCredential extends BasicData {
   protected $verificationLevel;
 
   /**
-   * @param string $value
-   * @param string $type
-   * @param string $verification
-   *
-   * @return mixed
-   */
-  public static function create(string $value, string $type, string $verification) {
-    $credential = new static();
-
-    return $credential
-      ->withValue($value)
-      ->withType($type)
-      ->withVerificationLevel($verification);
-  }
-
-  /**
    * @return string
    */
   public function getValue(): string {
@@ -92,7 +76,7 @@ class UserCredential extends BasicData {
    * @return UserCredential
    */
   public function withVerificationLevel(string $verificationLevel): UserCredential {
-    if (!self::validateType($type)) {
+    if (!self::validateType($verificationLevel)) {
       throw new \InvalidArgumentException("Invalid 'verificationLevel' provided: '{$verificationLevel}'.");
     }
     $this->verificationLevel = $verificationLevel;

@@ -14,7 +14,7 @@ abstract class BasicTypeList extends BasicList {
     $this->listOfTypes = [];
   }
 
-  protected function appendWithoutValidation($value) {
+  protected function appendWithoutValidation($value): void {
     $this->listOfTypes[] = $value;
   }
 

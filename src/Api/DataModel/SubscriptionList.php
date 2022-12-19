@@ -7,7 +7,7 @@ class SubscriptionList extends BasicTypeList {
 
   public static function fromDataArray(array $subscriptionList): SubscriptionList {
     $list = new static();
-    foreach ($productList as $itemData) {
+    foreach ($subscriptionList as $itemData) {
       $list->withSubscription(
         Subscription::create($itemData)
       );
