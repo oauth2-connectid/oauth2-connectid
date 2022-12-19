@@ -3,7 +3,7 @@
 namespace ConnectId\Api\DataModel;
 
 
-abstract class BasicTypeList extends BasicList implements \Countable, \Iterator {
+abstract class BasicTypeList extends BasicList {
 
   /**
    * @var array
@@ -18,7 +18,7 @@ abstract class BasicTypeList extends BasicList implements \Countable, \Iterator 
     $this->listOfTypes[] = $value;
   }
 
-  public function count() {
+  public function count(): int {
     return count($this->listOfTypes);
   }
 
@@ -26,15 +26,15 @@ abstract class BasicTypeList extends BasicList implements \Countable, \Iterator 
     return current($this->listOfTypes);
   }
 
-  public function key() {
+  public function key(): mixed {
     return key($this->listOfTypes);
   }
 
-  public function next() {
+  public function next(): void {
     next($this->listOfTypes);
   }
 
-  public function rewind() {
+  public function rewind(): void {
     reset($this->listOfTypes);
   }
 
