@@ -51,4 +51,64 @@ class Subscription extends BasicData {
    * @var bool
    */
   protected bool $paid;
+
+  /**
+   * @var array
+   */
+  protected array $priceDetails;
+
+  /**
+   * Informs if the subscription can be shared.
+   *
+   * @var bool
+   */
+  protected bool $sharable;
+
+  /**
+   * Specifies share type when subscription can be shared.
+   *
+   * USERS: Shareable with users
+   * NETS: Shareable nets (per domain, IP range)
+   * B2B: B2B shareable
+   *
+   * @var string|null
+   */
+  protected $shareType;
+
+  /**
+   * The sales person identifier on this subscription.
+   *
+   * @var string|null
+   */
+  protected $salesPerson;
+
+  /**
+   * Distribution level. Mainly important for B2B source(received) subscription.
+   * Based on this value you can resolve whether it is paper distribution or not.
+   *
+   * @var string|null
+   */
+  protected string $distributionLevel;
+
+  /**
+   * The unique id for productdeliveryplan
+   *
+   * @var int|null
+   */
+  protected $productDeliveryPlanId;
+
+  /**
+   * @return string
+   */
+  public function getProduct(): string {
+    return $this->product;
+  }
+
+  /**
+   * @return bool
+   */
+  public function isStopped(): bool {
+    return $this->stopped;
+  }
+
 }
