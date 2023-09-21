@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace ConnectId\Api;
 
+use ConnectId\Api\DataModel\AccessParameters;
 use ConnectId\Api\DataModel\CustomerProductList;
 use ConnectId\Api\DataModel\Order;
 use ConnectId\Api\DataModel\SubscriptionList;
@@ -86,23 +87,6 @@ class LoginApi extends ConnectId implements LoginApiInterface {
   /**
    * @inheritDoc
    */
-  public function getCustomerProducts(AccessTokenInterface $accessToken): CustomerProductList {
-    $url = Endpoints::getApiUrl('v1/customer/product', $this->testing);
-    $request = $this->getAuthenticatedRequest(self::METHOD_GET, $url, $accessToken);
-    $response = $this->getParsedResponse($request);
-
-    if (FALSE === is_array($response) || !isset($response['products'])) {
-      throw new UnexpectedValueException(
-        'Invalid response received from Authorization Server. Expected JSON.'
-      );
-    }
-
-    return CustomerProductList::fromDataArray($response['products']);
-  }
-
-  /**
-   * @inheritDoc
-   */
   public function submitOrder(AccessTokenInterface $accessToken, Order $order): Order {
     $url = Endpoints::getApiUrl('v1/order', $this->testing);
     $options = [
@@ -127,6 +111,28 @@ class LoginApi extends ConnectId implements LoginApiInterface {
   public function getOrderList(AccessTokenInterface $accessToken): array {
     $url = Endpoints::getApiUrl('v1/order/status', $this->testing);
     $request = $this->getAuthenticatedRequest(self::METHOD_GET, $url, $accessToken);
+    $response = $this->getParsedResponse($request);
+
+    if (FALSE === is_array($response)) {
+      throw new UnexpectedValueException(
+        'Invalid response received from Authorization Server. Expected JSON.'
+      );
+    }
+
+    return $response;
+  }
+
+  /**
+   * @inheritDoc
+   */
+  public function getCustomerAccess(AccessTokenInterface $accessToken, AccessParameters $parameters): array {
+    $url = Endpoints::getApiUrl('v1/customer/access', $this->testing);
+
+    $options = [
+      'body' => json_encode($parameters->toArray(FALSE)),
+    ];
+    $request = $this->getAuthenticatedRequest(self::METHOD_POST, $url, $accessToken, $options)
+      ->withAddedHeader('Content-Type', 'application/json');
     $response = $this->getParsedResponse($request);
 
     if (FALSE === is_array($response)) {
