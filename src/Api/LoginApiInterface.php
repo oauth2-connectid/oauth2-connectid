@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace ConnectId\Api;
 
 
+use ConnectId\Api\DataModel\AccessParameters;
 use ConnectId\Api\DataModel\CustomerProductList;
 use ConnectId\Api\DataModel\Order;
 use ConnectId\Api\DataModel\SubscriptionList;
@@ -58,21 +59,7 @@ interface LoginApiInterface {
    * @return string
    */
   public function getOrderFulfillmentUrl(string $orderId, string $returnUrl, string $errorUrl): string;
-
-  /**
-   * Returns a list of all products a user has access to.
-   *
-   * @see https://doc.mediaconnect.no/doc/ConnectID/v1/api/customer/product.html#Product_API
-   * @see https://doc.mediaconnect.no/doc/ConnectID/#tag/Product/paths/~1v1~1customer~1product/get
-   *
-   * @param  \League\OAuth2\Client\Token\AccessTokenInterface  $accessToken
-   *   Access token to identify the user.
-   *
-   * @return \ConnectId\Api\DataModel\CustomerProductList
-   *   List of products owned by the customer.
-   */
-  public function getCustomerProducts(AccessTokenInterface $accessToken): CustomerProductList;
-
+  
   /**
    * Lists the user's active subscriptions.
    *
@@ -115,4 +102,15 @@ interface LoginApiInterface {
    *   List of orders.
    */
   public function getOrderList(AccessTokenInterface $accessToken): array;
+
+  /**
+   * @param \League\OAuth2\Client\Token\AccessTokenInterface $accessToken
+   *   Access token to identify the user.
+   * @param \ConnectId\Api\DataModel\AccessParameters $parameters
+   *   Parameters to request access information about.
+   *
+   * @return array
+   *   Array with access information.
+   */
+  public function getCustomerAccess(AccessTokenInterface $accessToken, AccessParameters $parameters): array;
 }
