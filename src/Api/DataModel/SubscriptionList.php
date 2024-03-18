@@ -3,7 +3,7 @@
 namespace ConnectId\Api\DataModel;
 
 
-class SubscriptionList extends BasicTypeList {
+class SubscriptionList extends BasicList {
 
   public static function fromDataArray(array $subscriptionList): SubscriptionList {
     $list = new static();
@@ -17,7 +17,7 @@ class SubscriptionList extends BasicTypeList {
   }
 
   public function withSubscription(Subscription $subscription): SubscriptionList {
-    $this->appendWithoutValidation($subscription);
+    $this->items[] = $subscription;
     return $this;
   }
 }
